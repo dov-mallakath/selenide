@@ -1,13 +1,13 @@
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 import selenide.core.WebDriverTestBase;
+import selenide.pages.GoogleSearchPage;
+import selenide.pages.GoogleSearchResultPage;
 
+import static com.codeborne.selenide.CollectionCondition.texts;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 /**
  * @author Denys Ovcharuk (DOV) / WorldTicket A/S
@@ -15,13 +15,11 @@ import static com.codeborne.selenide.Selenide.open;
  */
 public class GoogleTest extends WebDriverTestBase{
 
-    private WebDriverWait wait;
-
     private String google = "http://www.google.com/ncr";
     private String searchText = "selenide";
 
     @Test
-    public void searchInGoogle(){
+    public void searchInGoogleTest(){
         open(google);
         By searchLocator = By.id("lst-ib");
         $(searchLocator).val(searchText).pressEnter();
@@ -30,5 +28,17 @@ public class GoogleTest extends WebDriverTestBase{
                 text("Selenide: concise UI tests in Java"),
                 text("selenide.org")
         );
+    }
+
+    @Test
+    public void searchInGoogleWithPageObjectTest(){
+        given:
+        open(google);
+        GoogleSearchPage googleSearchPage = new GoogleSearchPage();
+        when:
+        googleSearchPage.searchFor(searchText).clickSearch();
+        GoogleSearchResultPage googleSearchResultPage = new GoogleSearchResultPage();
+        then:
+        googleSearchResultPage.getLinkResults().shouldHaveSize(10).first().shouldHave(text("Selenide: concise UI tests in Java"),text("selenide.org"));
     }
 }
