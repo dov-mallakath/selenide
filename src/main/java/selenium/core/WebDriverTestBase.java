@@ -8,6 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
 
@@ -15,6 +16,7 @@ import static java.util.concurrent.TimeUnit.SECONDS;
  * @author Denys Ovcharuk (DOV) / WorldTicket A/S
  * @since 2017-07-12
  */
+@Listeners({TestListener.class})
 public class WebDriverTestBase {
 
     protected WebDriver webDriver;

@@ -5,6 +5,7 @@ import com.codeborne.selenide.WebDriverRunner;
 import io.github.bonigarcia.wdm.ChromeDriverManager;
 import io.github.bonigarcia.wdm.FirefoxDriverManager;
 import io.github.bonigarcia.wdm.InternetExplorerDriverManager;
+import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
@@ -17,6 +18,7 @@ import static com.codeborne.selenide.WebDriverRunner.CHROME;
 public class WebDriverTestBase {
 
     private String browser = System.getProperty("browser",CHROME);
+    protected WebDriver webDriver;
 
     @BeforeClass
     public void setUp(){
@@ -33,7 +35,9 @@ public class WebDriverTestBase {
 
         }
         Configuration.browser = browser;
+        webDriver = WebDriverRunner.getWebDriver();
         //Configuration.holdBrowserOpen = true;
+
     }
 
     @AfterClass

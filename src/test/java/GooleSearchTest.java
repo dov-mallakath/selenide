@@ -40,7 +40,7 @@ public class GooleSearchTest extends WebDriverTestBase {
 
 
         WebElement link = webDriver.findElement(linkLocator);
-        assertTrue(link.getText().contains(searchTest));
+        assertTrue(link.getText().contains(searchTest+"dgfgg"));
     }
 
 
