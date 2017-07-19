@@ -1,12 +1,10 @@
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
+import com.codeborne.selenide.SelenideElement;
+import org.openqa.selenium.By;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import selenide.core.WebDriverTestBase;
 
-import static com.codeborne.selenide.Selenide.open;
-import static com.codeborne.selenide.Selenide.switchTo;
+import static com.codeborne.selenide.Selenide.*;
 import static org.testng.Assert.assertTrue;
 
 /**
@@ -15,22 +13,18 @@ import static org.testng.Assert.assertTrue;
  */
 public class AlertBoxSelenide extends WebDriverTestBase {
 
-    @FindBy(xpath = "html/body/button")
-            private WebElement tryItButton;
-    @FindBy(id = "demo")
-            private WebElement fieldResult;
+    private SelenideElement tryItButton = $(By.xpath("html/body/button"));
+    private SelenideElement fieldResult = $(By.id("demo"));
 
     String webPageForW3 = "https://www.w3schools.com/js/tryit.asp?filename=tryjs_confirm";
 
     @BeforeClass
     public void SetUpClass(){
         open(webPageForW3);
-        PageFactory.initElements(webDriver, this);
     }
 
     @Test
     public void testToAlert() {
-        open(webPageForW3);
         switchTo().frame("iframeResult");
         tryItButton.click();
         switchTo().alert().dismiss();

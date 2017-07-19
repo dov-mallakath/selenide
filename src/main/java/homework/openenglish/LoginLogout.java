@@ -1,7 +1,9 @@
 package homework.openenglish;
 
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
+import com.codeborne.selenide.SelenideElement;
+import org.openqa.selenium.By;
+
+import static com.codeborne.selenide.Selenide.$;
 
 /**
  * @author Denys Ovcharuk (DOV) / WorldTicket A/S
@@ -12,22 +14,20 @@ public class LoginLogout {
     private String login = "shiosaky@gmail.com";
     private String password = "Test123";
 
-    @FindBy(id = "username")
-    private WebElement usernameInput;
-    @FindBy(id = "password")
-    private WebElement passwordInput;
-    @FindBy(id = "login-btn")
-    private WebElement loginButton;
+    private SelenideElement usernameInput = $(By.id("username"));
+    private SelenideElement passwordInput = $(By.id("password"));
+    private SelenideElement loginButton = $(By.id("login-btn"));
 
 
     public LoginLogout login(){
-        usernameInput.sendKeys(login);
-        passwordInput.sendKeys(password);
+        usernameInput.val(login);
+        passwordInput.val(password);
         loginButton.click();
         return this;
     }
 
     public void loginLogout(){
+        login();
 
     }
 

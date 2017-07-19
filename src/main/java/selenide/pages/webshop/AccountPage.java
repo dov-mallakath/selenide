@@ -11,14 +11,14 @@ import static com.codeborne.selenide.Selenide.$;
  */
 public class AccountPage {
 
-    private String logoutLinkXpath = ".//a[contains(concat('/',@href,'/'),'/logout/')]";
+    private SelenideElement logoutLink = $(By.xpath(".//a[contains(concat('/',@href,'/'),'/logout/')]"));
 
     public AccountPage logout(){
-        $(By.xpath(logoutLinkXpath)).click();
+        logoutLink.click();
         return this;
     }
 
     public SelenideElement getLogoutLink() {
-        return $(By.xpath(logoutLinkXpath));
+        return logoutLink;
     }
 }

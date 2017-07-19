@@ -1,5 +1,7 @@
 package selenide.pages.webshop;
 
+import com.codeborne.selenide.SelenideElement;
+import com.gargoylesoftware.htmlunit.html.ScriptElement;
 import org.openqa.selenium.By;
 import static com.codeborne.selenide.Selenide.$;
 
@@ -9,24 +11,24 @@ import static com.codeborne.selenide.Selenide.$;
  */
 public class LoginPage {
 
-    private String intputEmailId = "input-email";
-    private String inputPasswordId = "input-password";
-    private String submitXpath = ".//input[@type='submit']";
+    private SelenideElement inputEmail = $(By.id("input-email"));
+    private SelenideElement inputPassword = $(By.id("input-password"));
+    private SelenideElement submit = $(By.xpath(".//input[@type='submit']"));
 
     public LoginPage enterLogin(String login){
-        $(By.id(intputEmailId)).clear();
-        $(By.id(intputEmailId)).val(login);
+        inputEmail.clear();
+        inputEmail.val(login);
         return this;
     }
 
     public LoginPage enterPassword(String password){
-        $(By.id(inputPasswordId)).clear();
-        $(By.id(inputPasswordId)).val(password);
+        inputPassword.clear();
+        inputPassword.val(password);
         return this;
     }
 
     public LoginPage submit(){
-        $(By.xpath(submitXpath)).click();
+        submit.click();
         return this;
     }
 

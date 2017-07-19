@@ -1,17 +1,11 @@
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import selenide.core.WebDriverTestBase;
 
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
-import static com.codeborne.selenide.Selenide.switchTo;
+import static com.codeborne.selenide.Selenide.*;
 
 /**
  * @author Denys Ovcharuk (DOV) / WorldTicket A/S
@@ -21,14 +15,12 @@ public class DropdownsAndFrames extends WebDriverTestBase {
 
     final static private String URL = "https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_select";
 
-    @FindBy(xpath = ".//*[@name=\"iframeResult\"]")
-    private WebElement iframe;
-
+    private SelenideElement iframe = $(By.xpath(".//*[@name=\"iframeResult\"]"));
+    private SelenideElement select = $(By.xpath("html/body/select"));
 
     @BeforeClass
     public void SetUpClass(){
         open(URL);
-        PageFactory.initElements(webDriver, this);
     }
 
     @Test
@@ -38,8 +30,6 @@ public class DropdownsAndFrames extends WebDriverTestBase {
         //webDriver.switchTo().frame(iframe);
         switchTo().frame(iframe);
         //webDriver.switchTo().frame("iframeResult");
-
-        SelenideElement select = $(By.xpath("html/body/select"));
         select.selectOption(volvo);
         select.getSelectedOption().shouldHave(text(volvo));
         select.selectOption(opel);

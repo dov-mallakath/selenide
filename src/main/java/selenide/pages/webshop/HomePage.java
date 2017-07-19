@@ -11,20 +11,20 @@ import static com.codeborne.selenide.Selenide.$;
  */
 public class HomePage {
 
-    private String privateRoomXpath = ".//a[contains(concat('/',@href,'/'),'/my-account/')]";
-    private String loginLinkXpath = ".//a[contains(concat('/',@href,'/'),'/login/')]";
+    private SelenideElement privateRoom = $(By.xpath(".//a[contains(concat('/',@href,'/'),'/my-account/')]"));
+    private SelenideElement loginLink = $(By.xpath(".//a[contains(concat('/',@href,'/'),'/login/')]"));
 
     public SelenideElement getLoginLink() {
-        return $(By.xpath(loginLinkXpath));
+        return loginLink;
     }
 
     public HomePage pressAccounts(){
-        $(By.xpath(privateRoomXpath)).click();
+        privateRoom.click();
         return this;
     }
 
     public HomePage pressLogin(){
-        $(By.xpath(loginLinkXpath)).click();
+        loginLink.click();
         return this;
     }
 
