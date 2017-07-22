@@ -2,6 +2,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 import selenium.core.WebDriverTestBase;
+import util.AbstractPage;
 
 import java.util.List;
 

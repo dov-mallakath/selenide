@@ -8,6 +8,7 @@ import io.github.bonigarcia.wdm.InternetExplorerDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import util.AbstractPage;
 
 import static com.codeborne.selenide.WebDriverRunner.CHROME;
 

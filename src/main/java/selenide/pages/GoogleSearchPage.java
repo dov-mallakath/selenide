@@ -2,6 +2,7 @@ package selenide.pages;
 
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
+import util.AbstractPage;
 
 import static com.codeborne.selenide.Selenide.$;
 
@@ -9,7 +10,7 @@ import static com.codeborne.selenide.Selenide.$;
  * @author Denys Ovcharuk (DOV) / WorldTicket A/S
  * @since 2017-07-15
  */
-public class GoogleSearchPage {
+public class GoogleSearchPage extends AbstractPage{
 
     private SelenideElement search = $(By.id("lst-ib"));
 
@@ -18,8 +19,15 @@ public class GoogleSearchPage {
         return this;
     }
 
+    public GoogleSearchPage searchFor(String searchText, String locator, String type){
+        search.val(searchText);
+        jsClick(locator,type);
+        return this;
+    }
+
     public GoogleSearchPage clickSearch(){
         search.pressEnter();
+
         return this;
     }
 

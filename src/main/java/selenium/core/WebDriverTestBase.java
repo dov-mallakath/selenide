@@ -10,7 +10,10 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 
+import java.util.concurrent.TimeUnit;
+
 import static java.util.concurrent.TimeUnit.SECONDS;
+import static util.PropertiesCache.getProperty;
 
 /**
  * @author Denys Ovcharuk (DOV) / WorldTicket A/S
@@ -27,8 +30,10 @@ public class WebDriverTestBase {
         ChromeDriverManager.getInstance().setup();
         Configuration.browser = WebDriverRunner.CHROME;
         webDriver = new ChromeDriver();
-        wait = new WebDriverWait(webDriver, 60);
-        webDriver.manage().timeouts().implicitlyWait(15, SECONDS);
+        wait = new WebDriverWait(webDriver, Integer.valueOf(getProperty("wait.explicit")));
+        webDriver.manage().timeouts().implicitlyWait(Integer.valueOf(getProperty("wait.implicit")), SECONDS);
+        webDriver.manage().timeouts().pageLoadTimeout(Integer.valueOf(getProperty("wait.pageLoad")), TimeUnit.SECONDS);
+        webDriver.manage().timeouts().setScriptTimeout(Integer.valueOf(getProperty("wait.script")), TimeUnit.SECONDS);
         webDriver.manage().window().maximize();
     }
 

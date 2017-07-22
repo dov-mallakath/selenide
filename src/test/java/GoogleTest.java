@@ -1,3 +1,4 @@
+import org.junit.Ignore;
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 import selenide.core.WebDriverTestBase;
@@ -36,7 +37,8 @@ public class GoogleTest extends WebDriverTestBase{
         open(google);
         GoogleSearchPage googleSearchPage = new GoogleSearchPage();
         when:
-        googleSearchPage.searchFor(searchText).clickSearch();
+//        googleSearchPage.searchFor(searchText).clickSearch();
+        googleSearchPage.searchFor(searchText,"btnG","name");
         GoogleSearchResultPage googleSearchResultPage = new GoogleSearchResultPage();
         then:
         googleSearchResultPage.getLinkResults().shouldHaveSize(10).first().shouldHave(text("Selenide: concise UI tests in Java"),text("selenide.org"));
