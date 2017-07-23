@@ -19,7 +19,8 @@ import static com.codeborne.selenide.WebDriverRunner.PHANTOMJS;
  */
 public class WebDriverTestBase {
 
-    private String browser = System.getProperty("browser",PHANTOMJS);
+//    private String browser = System.getProperty("browser",PHANTOMJS);
+    private String browser = System.getProperty("browser",CHROME);
     protected WebDriver webDriver;
 
     @BeforeClass

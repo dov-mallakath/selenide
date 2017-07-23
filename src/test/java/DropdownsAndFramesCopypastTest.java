@@ -9,7 +9,7 @@ import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
 
-public class DropdownsAndFramesCopypast extends WebDriverTestBase {
+public class DropdownsAndFramesCopypastTest extends WebDriverTestBase {
 
     @Test
     public void testDropdown() {

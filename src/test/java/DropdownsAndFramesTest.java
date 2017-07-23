@@ -11,7 +11,7 @@ import static com.codeborne.selenide.Selenide.*;
  * @author Denys Ovcharuk (DOV) / WorldTicket A/S
  * @since 2017-07-19
  */
-public class DropdownsAndFrames extends WebDriverTestBase {
+public class DropdownsAndFramesTest extends WebDriverTestBase {
 
     final static private String URL = "https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_select";
 

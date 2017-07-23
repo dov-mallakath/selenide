@@ -11,7 +11,7 @@ import static org.testng.Assert.assertTrue;
  * @author Denys Ovcharuk (DOV) / WorldTicket A/S
  * @since 2017-07-19
  */
-public class AlertBoxSelenide extends WebDriverTestBase {
+public class AlertBoxSelenideTest extends WebDriverTestBase {
 
     private SelenideElement tryItButton = $(By.xpath("html/body/button"));
     private SelenideElement fieldResult = $(By.id("demo"));

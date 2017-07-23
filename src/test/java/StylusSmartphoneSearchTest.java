@@ -8,6 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import selenium.core.WebDriverTestBase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,9 +20,9 @@ import static org.testng.Assert.assertTrue;
  * @author Denys Ovcharuk (DOV) / WorldTicket A/S
  * @since 2017-07-12
  */
-public class StylusSmartphoneSearch {
+public class StylusSmartphoneSearchTest extends WebDriverTestBase {
 
-    private WebDriver webDriver;
+    //private WebDriver webDriver;
 
     private String link = "http://stylus.com.ua/";
     private String searchInputXpath = ".//input[@name='q']";
@@ -34,11 +35,11 @@ public class StylusSmartphoneSearch {
 
     @BeforeClass
     public void setupWebDriver(){
-        ChromeDriverManager.getInstance().setup();
-        Configuration.browser = WebDriverRunner.CHROME;
-        webDriver = new ChromeDriver();
-        webDriver.manage().timeouts().implicitlyWait(15, SECONDS);
-        webDriver.manage().window().maximize();
+//        ChromeDriverManager.getInstance().setup();
+//        Configuration.browser = WebDriverRunner.CHROME;
+//        webDriver = new ChromeDriver();
+//        webDriver.manage().timeouts().implicitlyWait(15, SECONDS);
+//        webDriver.manage().window().maximize();
         webDriver.get(link);
     }
 

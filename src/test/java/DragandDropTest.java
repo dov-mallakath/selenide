@@ -4,7 +4,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 import selenium.core.WebDriverTestBase;
 
-public class DragandDrop extends WebDriverTestBase {
+public class DragandDropTest extends WebDriverTestBase {
     @Test
     public void testDragDrop() throws InterruptedException {
         webDriver.get("https://gojs.net/latest/samples/htmlDragDrop.html?gclid=CLjWnLeG5tQCFUeVGwodCowEcA");

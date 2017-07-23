@@ -19,7 +19,7 @@ import static org.testng.Assert.assertTrue;
  * @author Denys Ovcharuk (DOV) / WorldTicket A/S
  * @since 2017-07-12
  */
-public class LoginTestWebShop extends WebDriverTestBase {
+public class LoginWebShopTest extends WebDriverTestBase {
 
     private String gboShop = "https://gboshop.com/";
 
