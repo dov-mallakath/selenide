@@ -3,8 +3,10 @@ package selenium.core;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
 import io.github.bonigarcia.wdm.ChromeDriverManager;
+import io.github.bonigarcia.wdm.PhantomJsDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -27,9 +29,12 @@ public class WebDriverTestBase {
 
     @BeforeClass
     public void setUp(){
-        ChromeDriverManager.getInstance().setup();
-        Configuration.browser = WebDriverRunner.CHROME;
-        webDriver = new ChromeDriver();
+//        ChromeDriverManager.getInstance().setup();
+//        Configuration.browser = WebDriverRunner.CHROME;
+//        webDriver = new ChromeDriver();
+        PhantomJsDriverManager.getInstance().setup();
+        Configuration.browser = WebDriverRunner.PHANTOMJS;
+        webDriver = new PhantomJSDriver();
         wait = new WebDriverWait(webDriver, Integer.valueOf(getProperty("wait.explicit")));
         webDriver.manage().timeouts().implicitlyWait(Integer.valueOf(getProperty("wait.implicit")), SECONDS);
         webDriver.manage().timeouts().pageLoadTimeout(Integer.valueOf(getProperty("wait.pageLoad")), TimeUnit.SECONDS);

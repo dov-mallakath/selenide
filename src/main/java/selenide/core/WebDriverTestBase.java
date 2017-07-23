@@ -5,12 +5,13 @@ import com.codeborne.selenide.WebDriverRunner;
 import io.github.bonigarcia.wdm.ChromeDriverManager;
 import io.github.bonigarcia.wdm.FirefoxDriverManager;
 import io.github.bonigarcia.wdm.InternetExplorerDriverManager;
+import io.github.bonigarcia.wdm.PhantomJsDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import util.AbstractPage;
 
 import static com.codeborne.selenide.WebDriverRunner.CHROME;
+import static com.codeborne.selenide.WebDriverRunner.PHANTOMJS;
 
 /**
  * @author Denys Ovcharuk (DOV) / WorldTicket A/S
@@ -18,7 +19,7 @@ import static com.codeborne.selenide.WebDriverRunner.CHROME;
  */
 public class WebDriverTestBase {
 
-    private String browser = System.getProperty("browser",CHROME);
+    private String browser = System.getProperty("browser",PHANTOMJS);
     protected WebDriver webDriver;
 
     @BeforeClass
@@ -32,6 +33,9 @@ public class WebDriverTestBase {
                 break;
             case WebDriverRunner.INTERNET_EXPLORER:
                 InternetExplorerDriverManager.getInstance().setup();
+                break;
+            case WebDriverRunner.PHANTOMJS:
+                PhantomJsDriverManager.getInstance().setup();
                 break;
 
         }

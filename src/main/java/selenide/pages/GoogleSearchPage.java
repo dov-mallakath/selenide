@@ -12,7 +12,7 @@ import static com.codeborne.selenide.Selenide.$;
  */
 public class GoogleSearchPage extends AbstractPage{
 
-    private SelenideElement search = $(By.id("lst-ib"));
+    private SelenideElement search = $(By.name("q"));
 
     public GoogleSearchPage searchFor(String searchText){
         search.val(searchText);

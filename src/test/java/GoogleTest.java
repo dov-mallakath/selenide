@@ -22,7 +22,7 @@ public class GoogleTest extends WebDriverTestBase{
     @Test
     public void searchInGoogleTest(){
         open(google);
-        By searchLocator = By.id("lst-ib");
+        By searchLocator = By.xpath(".//*[@name='q']");
         $(searchLocator).val(searchText).pressEnter();
         $$("#ires .g").shouldHaveSize(10);
         $("#ires .g").shouldBe(visible).shouldHave(
