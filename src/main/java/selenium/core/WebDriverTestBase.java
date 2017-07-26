@@ -4,14 +4,18 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
 import io.github.bonigarcia.wdm.ChromeDriverManager;
 import io.github.bonigarcia.wdm.PhantomJsDriverManager;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
@@ -29,9 +33,19 @@ public class WebDriverTestBase {
 
     @BeforeClass
     public void setUp(){
-        ChromeDriverManager.getInstance().setup();
-        Configuration.browser = WebDriverRunner.CHROME;
-        webDriver = new ChromeDriver();
+//        ChromeDriverManager.getInstance().setup();
+//        Configuration.browser = WebDriverRunner.CHROME;
+//        webDriver = new ChromeDriver();
+
+        DesiredCapabilities capabillities = DesiredCapabilities.chrome();
+        capabillities.setBrowserName("chrome");
+        capabillities.setPlatform(Platform.ANY);
+        try {
+            webDriver = new RemoteWebDriver(new URL("http://172.17.0.1:32768/wd/hub/"), capabillities);
+        }catch (Exception e){e.printStackTrace();}
+
+
+
 //        PhantomJsDriverManager.getInstance().setup();
 //        Configuration.browser = WebDriverRunner.PHANTOMJS;
 //        webDriver = new PhantomJSDriver();
