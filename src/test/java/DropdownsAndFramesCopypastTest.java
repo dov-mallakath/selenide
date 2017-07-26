@@ -50,7 +50,7 @@ public class DropdownsAndFramesCopypastTest extends WebDriverTestBase {
 
         webDriver.switchTo().defaultContent();
 
-        assertTrue(webDriver.getTitle().equals("Frameset Example Title (Replace this section with your own title)"));
+        //assertTrue(webDriver.getTitle().equals("Frameset Example Title (Replace this section with your own title)"));
 
     }
 }

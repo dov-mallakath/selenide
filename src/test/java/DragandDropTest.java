@@ -12,6 +12,6 @@ public class DragandDropTest extends WebDriverTestBase {
         WebElement to = webDriver.findElement(By.xpath(".//*[@id='myDiagramDiv']/canvas"));
         Actions builder = new Actions(webDriver);
         builder.clickAndHold(from).moveToElement(to).release(to).build().perform();
-        from.getAttribute("src").equals("img_logo.gif");
+        //from.getAttribute("src").equals("img_logo.gif");
     }
 }
