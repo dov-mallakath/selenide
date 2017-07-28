@@ -69,6 +69,6 @@ public class WebDriverTestBase {
 
     @AfterClass
     public void tearDown(){
-
+        webDriver.quit();
     }
 }
