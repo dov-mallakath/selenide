@@ -41,7 +41,7 @@ public class GooleSearchTest extends WebDriverTestBase {
         assertTrue(!links.isEmpty());
         System.out.println(links.size());
         for (WebElement linkE : links) {
-            if(linkE.isDisplayed()&&(linkE.getText().contains("selenium")||linkE.getText().contains("Selenium"))){
+            if(linkE.isDisplayed()&&(linkE.getText().contains("seleniumium")||linkE.getText().contains("Seleniumium"))){
                 System.out.println(linkE.getText());
             }
         }
