@@ -13,6 +13,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
+import util.PropertiesCache;
 
 import java.net.URL;
 
@@ -66,6 +67,8 @@ public class WebDriverTestBase {
             Configuration.browser = browser;
             webDriver = WebDriverRunner.getWebDriver();
         }
+        Configuration.timeout = Long.parseLong(PropertiesCache.getProperty("timeout"));
+        Configuration.reportsFolder = PropertiesCache.getProperty("log.screenshots");
     }
 
     @AfterClass
