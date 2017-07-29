@@ -48,7 +48,7 @@ public class GooleSearchTest extends WebDriverTestBase {
 
 
 
-        assertTrue(links.get(0).getText().contains(searchTest+"asdfsgs"));
+        assertTrue(links.get(0).getText().contains(searchTest));
     }
 
 
