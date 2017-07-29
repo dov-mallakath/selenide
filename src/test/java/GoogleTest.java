@@ -45,6 +45,6 @@ public class GoogleTest extends WebDriverTestBase{
         googleSearchPage.searchFor(searchText,"btnG","name");
         GoogleSearchResultPage googleSearchResultPage = new GoogleSearchResultPage();
         then:
-        googleSearchResultPage.getLinkResults().shouldHaveSize(10).first().shouldHave(text("Selenide: concise UI tests in Java"),text("selenide.org"));
+        googleSearchResultPage.getLinkResults().shouldHaveSize(10).first().shouldHave(text("Selenide: concise UI tests in Java"),text("selenide.orgsadf"));
     }
 }
