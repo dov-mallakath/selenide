@@ -2,6 +2,7 @@ package selenide.pages;
 
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
+import ru.yandex.qatools.allure.annotations.Step;
 import util.AbstractPage;
 
 import static com.codeborne.selenide.Selenide.$;
@@ -19,6 +20,7 @@ public class GoogleSearchPage extends AbstractPage{
         return this;
     }
 
+    @Step("Searches for {0} text")
     public GoogleSearchPage searchFor(String searchText, String locator, String type){
         search.val(searchText);
         jsClick(locator,type);

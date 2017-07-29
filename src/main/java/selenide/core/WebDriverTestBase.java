@@ -12,6 +12,8 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
+import selenium.core.TestListener;
 
 import java.net.URL;
 
@@ -22,6 +24,7 @@ import static com.codeborne.selenide.WebDriverRunner.PHANTOMJS;
  * @author Denys Ovcharuk (DOV) / WorldTicket A/S
  * @since 2017-07-12
  */
+@Listeners({TestListener.class})
 public class WebDriverTestBase {
 
 //    private String browser = System.getProperty("browser",PHANTOMJS);

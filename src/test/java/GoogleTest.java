@@ -1,6 +1,8 @@
 import org.junit.Ignore;
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
+import ru.yandex.qatools.allure.annotations.Features;
+import ru.yandex.qatools.allure.annotations.Stories;
 import selenide.core.WebDriverTestBase;
 import selenide.pages.GoogleSearchPage;
 import selenide.pages.GoogleSearchResultPage;
@@ -14,6 +16,8 @@ import static com.codeborne.selenide.Selenide.*;
  * @author Denys Ovcharuk (DOV) / WorldTicket A/S
  * @since 2017-07-12
  */
+@Features("Google search")
+@Stories({"WEB-888  "})
 public class GoogleTest extends WebDriverTestBase{
 
     private String google = "http://www.google.com/ncr";
