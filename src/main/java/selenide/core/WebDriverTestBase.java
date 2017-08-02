@@ -13,11 +13,13 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
+import org.testng.annotations.Parameters;
 import util.PropertiesCache;
 
 import java.net.URL;
 
 import static com.codeborne.selenide.WebDriverRunner.CHROME;
+import static com.codeborne.selenide.WebDriverRunner.FIREFOX;
 
 /**
  * @author Denys Ovcharuk (DOV) / WorldTicket A/S
@@ -30,8 +32,18 @@ public class WebDriverTestBase {
     private String browser = System.getProperty("browser","external");
     protected WebDriver webDriver;
 
+    public DesiredCapabilities setDesiredCapabilities(String platform, String browserName){
+        DesiredCapabilities caps = new DesiredCapabilities();
+        if(platform.equalsIgnoreCase("LINUX")){
+            caps.setPlatform(Platform.LINUX);
+            caps.setBrowserName(browserName);
+        }
+        return caps;
+    }
+
+    @Parameters({"platform","browser"})
     @BeforeClass
-    public void setUp() {
+    public void setUp(String platform, String browserName) {
         switch (browser) {
             case CHROME:
                 ChromeDriverManager.getInstance().setup();
@@ -46,21 +58,25 @@ public class WebDriverTestBase {
                 PhantomJsDriverManager.getInstance().setup();
                 break;
             case "external":
-                ChromeDriverManager.getInstance().setup();
-                System.setProperty("webdriver.chrome.driver", ChromeDriverManager.getInstance().getBinaryPath());
+//                ChromeDriverManager.getInstance().setup();
+//                System.setProperty("webdriver.chrome.driver", ChromeDriverManager.getInstance().getBinaryPath());
 
-                DesiredCapabilities capabillities = DesiredCapabilities.chrome();
-                capabillities.setBrowserName("chrome");
-                capabillities.setPlatform(Platform.ANY);
+//                //DesiredCapabilities capabillities = DesiredCapabilities.chrome();
+//                DesiredCapabilities capabillities = DesiredCapabilities.firefox();
+//                //capabillities.setBrowserName("chrome");
+//                capabillities.setBrowserName(browserName);
+//                capabillities.setPlatform(Platform.ANY);
+
                 try {
-                    webDriver = new RemoteWebDriver(new URL("http://172.17.0.1:32768/wd/hub/"), capabillities);
+                    webDriver = new RemoteWebDriver(new URL("http://172.17.0.1:32768/wd/hub/"), setDesiredCapabilities(platform,browserName));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
                 break;
         }
         if (browser.equals("external")) {
-            Configuration.browser = CHROME;
+            //Configuration.browser = CHROME;
+            Configuration.browser = FIREFOX;
             WebDriverRunner.setWebDriver(webDriver);
             WebDriverRunner.getAndCheckWebDriver();
         } else {

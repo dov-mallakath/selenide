@@ -1,3 +1,5 @@
+package com.google;
+
 import org.junit.Ignore;
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;

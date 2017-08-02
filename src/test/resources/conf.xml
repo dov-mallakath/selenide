@@ -1,0 +1,22 @@
+<suite name="Parallel Tests" verbose="1" thread-count="2" parallel="tests">
+    <tests>
+        <test name="Linux + Chrome Test">
+            <parameters>
+                <parameter name ="platform" value="LINUX" />
+                <parameter name ="browser" value="chrome" />
+            </parameters>
+            <classes>
+                <class name="com.google.GoogleTest" />
+            </classes>
+        </test>
+        <test name="Linux + Firefox Test">
+            <parameters>
+                <parameter name ="platform" value="LINUX" />
+                <parameter name ="browser" value="firefox" />
+            </parameters>
+            <classes>
+                <class name="com.google.GooleSearchTest" />
+            </classes>
+        </test>
+    </tests>
+</suite>
