@@ -76,7 +76,7 @@ public class WebDriverTestBase {
         }
         if (browser.equals("external")) {
             //Configuration.browser = CHROME;
-            Configuration.browser = FIREFOX;
+            //Configuration.browser = FIREFOX;
             WebDriverRunner.setWebDriver(webDriver);
             WebDriverRunner.getAndCheckWebDriver();
         } else {
