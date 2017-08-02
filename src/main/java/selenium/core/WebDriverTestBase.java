@@ -69,7 +69,6 @@ public class WebDriverTestBase {
         webDriver.manage().timeouts().pageLoadTimeout(Integer.valueOf(getProperty("wait.pageLoad")), TimeUnit.SECONDS);
         webDriver.manage().timeouts().setScriptTimeout(Integer.valueOf(getProperty("wait.script")), TimeUnit.SECONDS);
         webDriver.manage().window().maximize();
-        WebDriverRunner.setWebDriver(webDriver);
     }
 
     @AfterClass

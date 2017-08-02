@@ -7,6 +7,7 @@
             </parameters>
             <classes>
                 <class name="com.google.GoogleTest" />
+                <class name="com.google.GooleSearchTest" />
             </classes>
         </test>
         <test name="Linux + Firefox Test">
@@ -15,7 +16,7 @@
                 <parameter name ="browser" value="firefox" />
             </parameters>
             <classes>
-                <class name="com.google.GooleSearchTest" />
+                <class name="LoginWebShopTest" />
             </classes>
         </test>
     </tests>
